@@ -8,20 +8,28 @@
 
         function pick_number() {
             var random_number = Math.floor((Math.random() * 10) + 1);
+            console.log("The number has been picked");
             return random_number;
+
+        }
+
+        function make_guess() {
+            console.log("User has guessed a number");
+
+            var the_guess = $("#guess_input").val();
+            console.log("User's number is " + the_guess);
         }
 
         var the_number = null;
 
-        $(body).load(function() {
-            the_number = pick_number();
-        });
+
+
     </script>
 </head>
-<body>
+<body onload="the_number = pick_number()">
 <form>
     <input type="text" id="guess_input"></input>
-    <button type="button">Guess</button>
+    <button type="button" onclick="make_guess()">Guess</button>
 </form>
 <div id="response_div"></div>
 </body>
