@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="neal">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>Guess Who</title>
+    <script>
+        var the_number = null;
+
+        function pick_number(){
+            var random_number = Math.floor(Math.random() * 10) + 1;
+            console.log(random_number);
+            the_number = random_number;
+            return;
+        }
+
+        $(document).ready(function(){
+
+            $("button").click( function make_guess(){
+
+                var the_guess = $('#guess_input').val();
+                var the_guess = parseInt(the_guess);
+
+                console.log(the_guess , the_number);
+                
+            });
+
+        });
+
+
+
+    </script>
+</head>
+<body onload="pick_number()">
+<input id="guess_input" type="text">
+<div id="response_div">The div</div>
+<button>guess</button>
+</body>
+</html>
