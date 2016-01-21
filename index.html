@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Guess?</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+            <script>
+                var the_number = null;
+                the_number = function pick_number(){
+                    var random_number = Math.floor(Math.random() * 10) + 1;
+                }
+            </script>
+        </head>
+        <body onload="pick_number()">
+            <input id="guess_input">
+            <div id="response_div"></div>
+            <button>Feelin lucky?</button>
+        </body>
+    </html>
