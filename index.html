@@ -6,11 +6,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>Guess Who</title>
     <script>
+        //set global var;
         var the_number = null;
-
+        //on load function create random number;
         function pick_number(){
             var random_number = Math.floor(Math.random() * 10) + 1;
-            console.log(random_number);
+            //for cheat testing
+            //console.log(random_number);
             the_number = random_number;
             return;
         }
@@ -18,18 +20,25 @@
         $(document).ready(function(){
 
             $("button").click( function make_guess(){
-
+//get the user input
                 var the_guess = $('#guess_input').val();
                 var the_guess = parseInt(the_guess);
-
-                console.log(the_guess , the_number);
-                
+//                Compare the numbers switch
+                switch(true){
+                    case the_guess == the_number:
+                        $("#response_div").text("You guessed it!");
+                        break;
+                    case the_guess > the_number:
+                        $("#response_div").text("Too High!");
+                        break;
+                    case the_guess < the_number:
+                        $("#response_div").text("Too Low!");
+                        break;
+                    default:
+                        $("#response_div").text("What was that");
+                }
             });
-
         });
-
-
-
     </script>
 </head>
 <body onload="pick_number()">
