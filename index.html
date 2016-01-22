@@ -9,24 +9,28 @@
                 function pick_number(){
                     random_number = Math.floor(Math.random() * 10) + 1;
                     return random_number;
-                };
-                $('button').click(function(){
-                    make_guess();
-                });
-                function make_guess(){
-                    guess_input = $('#guess_input').value;
-                    if (guess_input > the_number){
-                        $('#response_div').text('Too High!');
-                    } else if (guess_input < the_number){
-                        $('#response_div').text('Too low!');
-                    } else {
-                        $('#response_div').text('You guessed it!');
-                    }
-                };
+                }
 
+                $(document).ready(function(){
+                   $('button').click(function() {
+                       make_guess();
+                   })
+                });
+
+                function make_guess(){
+                    guess_input = $('#guess_input').val();
+                    if (guess_input > the_number){
+                        $('#response_div').text('Too High! omg is this working?');
+                    } else if (guess_input < the_number){
+                        $('#response_div').text('Too Low! omg is this working?');
+                    } else {
+                        $('#response_div').text('HOLY MOLY YOU GOT IT! OMG IT WORKS!');
+
+                    }
+                }
             </script>
         </head>
-        <body onload="pick_number()">
+        <body onload="the_number = pick_number()">
             <input id="guess_input">
             <div id="response_div">Lets do this. Guess a Number.</div><br>
             <button>Feelin lucky?</button>
