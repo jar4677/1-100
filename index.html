@@ -8,7 +8,7 @@
 
         function pick_number() {
             var random_number = Math.floor((Math.random() * 10) + 1);
-            console.log("The number has been picked");
+            console.log("The number is " + random_number);
             return random_number;
 
         }
@@ -18,11 +18,19 @@
 
             var the_guess = $("#guess_input").val();
             console.log("User's number is " + the_guess);
+
+            if(the_guess > the_number) {
+                $("#response_div").html("Too High!");
+            }
+            else if(the_guess < the_number) {
+                $("#response_div").html("Too Low!");
+            }
+            else if(the_guess == the_number) {
+                $("#response_div").html("You guessed it!");
+            }
         }
 
         var the_number = null;
-
-
 
     </script>
 </head>
