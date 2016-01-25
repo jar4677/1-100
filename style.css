@@ -1,0 +1,23 @@
+.container{
+    margin:10%;
+}
+.neutralGuess{
+    background-color:grey;
+    height:50px;
+    width:50px;
+}
+.highGuess{
+    background-color:darkred;
+    height:50px;
+    width:50px;
+}
+.lowGuess{
+    background-color:darkred;
+    height:50px;
+    width:50px;
+}
+.correctGuess{
+    background-color:green;
+    height:50px;
+    width:50px;
+}

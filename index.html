@@ -2,7 +2,12 @@
     <html>
         <head>
             <title>Guess?</title>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+            <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+            <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="style.css"/>
 
             <script>
                 var the_number = null;
@@ -16,23 +21,44 @@
                        make_guess();
                    })
                 });
-
+/*playing with bounce effects here*/
                 function make_guess(){
                     guess_input = $('#guess_input').val();
-                    if (guess_input > the_number){
+                    if (guess_input > the_number && guess_input > 0 && guess_input <=  10){
                         $('#response_div').text('Too High! omg is this working?');
-                    } else if (guess_input < the_number){
+                        $('#colorSquare').addClass('highGuess').effect('shake');
+                    } else if (guess_input < the_number && guess_input > 0 && guess_input <= 10){
                         $('#response_div').text('Too Low! omg is this working?');
-                    } else {
-                        $('#response_div').text('HOLY MOLY YOU GOT IT! OMG IT WORKS!');
-
+                        $('#colorSquare').addClass('lowGuess').effect('shake');
+                    } else if (guess_input == the_number){
+                        the_number = pick_number();
+                        $('#response_div').text('HOLY MOLY YOU GOT IT! OMG IT WORKS!').effect('shake');
+                        $('#colorSquare').addClass('correctGuess').effect('bounce').delay(1500).queue(function(){
+                            $('#response_div').text('Lets play again!');
+                            $('#colorSquare').removeClass('correctGuess').removeClass('highGuess').removeClass('lowGuess').dequeue();
+                        });
+                    }else {
+                        $('#response_div').text('Try a number between 1 to 10');
+                        $('#colorSquare').addClass('neutralGuess');
                     }
                 }
             </script>
         </head>
         <body onload="the_number = pick_number()">
-            <input id="guess_input">
-            <div id="response_div">Lets do this. Guess a Number.</div><br>
-            <button>Feelin lucky?</button>
+        <br><br>
+            <div class="container">
+                <h1>Guess a number between 1 and 10</h1>
+                <div class="row">
+                    <div class="col-md-2 col-sm-1 col-xs-1"></div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <input id="guess_input">
+                        <div id="response_div">Lets do this. Guess a Number.</div><br>
+                        <button>Feelin lucky?</button>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <div id="colorSquare" class="neutralGuess"></div>
+                    </div>
+                </div>
+            </div>
         </body>
     </html>
