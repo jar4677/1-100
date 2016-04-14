@@ -43,14 +43,24 @@ function makeGuess() {
     }
 }
 
-$("#guess").click(function () {
-    makeGuess();
-});
-
-$("#reset").click(function () {
+function reset() {
     theNumber = pickNumber();
     $("#response").html("Guess");
     $("#reprompt").css('display', 'none');
     $("#guess_input").val('');
     $("#guess_input").focus();
-})
+}
+
+$("#guess").click(function () {
+    var msg = $("#response").html();
+    console.log(msg);
+    if (msg = "You guessed it!"){
+        reset();
+    } else {
+        makeGuess();
+    }
+});
+
+$("#reset").click(function () {
+    reset();
+});
