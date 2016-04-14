@@ -6,34 +6,14 @@
     <link href="style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 </head>
-<body onload="the_number = pick_number()">
-<input type="number" id="guess_input" placeholder="Guess a number between 1 and 10" style="width: 200px">
+<body>
+<div id="guess" class="response_div">
+    <input type="text" id="guess_input" placeholder="Guess a number between 1 and 10" autofocus>
+    <p id="response">Guess</p>
+</div>
 
-<button type="submit" id="guess">Guess</button>
+<!-- javaScript link -->
+<script src="script.js" rel="script"></script>
 
-<div id="response_div"></div>
-
-<script>
-    var the_number = null;
-    function pick_number() {
-        var random_number = (Math.ceil(Math.random() * 10));
-        return random_number;
-    }
-    function make_guess() {
-        var the_guess = $("#guess_input").val();
-        if (the_guess > the_number){
-            $("#response_div").html("Too High!");
-        } else if (the_guess < the_number){
-            $("#response_div").html("Too Low!");
-        } else {
-            $("#response_div").html("You guessed it!");
-        }
-    }
-
-    $("#guess").click(function () {
-        make_guess();
-    });
-
-</script>
 </body>
 </html>
