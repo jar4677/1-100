@@ -1,9 +1,33 @@
+/*Set up body*/
 body{
     font-family: Arial, sans-serif;
     margin: 0;
 }
+/*------------  ------------*/
+/*------------ Centering Div ------------*/
 
-input{
+.container{
+    position: relative;
+    left: 50vw;
+    top: calc(50vh - 70px);
+    transform: translateX(-50%);
+    display: inline-block;
+    text-align: center;
+}
+
+/*------------ Clickable Div with Response text ------------*/
+
+.response_div{
+    height: 140px;
+    width: 425px;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 6px black;
+}
+
+/*-------- Input Box --------*/
+#guess_input{
     width: 400px;
     height: 50px;
     border: none;
@@ -15,7 +39,7 @@ h1{
     margin: .5em;
 }
 
-#reprompt, #new-game{
+#reprompt, #new-game, #your-score{
     display: none;
 }
 
@@ -23,22 +47,15 @@ h1{
     outline: none;
 }
 
-.game-board{
-    display: inline-block;
-    position: relative;
-    left: 50vw;
-    top: 50vh;
-    transform: translate(-50%, -50%);
-}
+/*.game-board{*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*left: 50vw;*/
+    /*top: 50vh;*/
+    /*transform: translate(-50%, -50%);*/
+/*}*/
 
-.response_div{
-    height: 140px;
-    background-color: grey;
-    padding: 20px;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 2px 2px 6px black;
-}
+
 
 /*
 #reset{

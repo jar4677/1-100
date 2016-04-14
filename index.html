@@ -7,15 +7,18 @@
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 </head>
 <body>
-<div class="game-board">
-    <div id="guess" class="response_div">
-        <input type="text" id="guess_input" placeholder="Guess a number between 1 and 10" autofocus>
-        <h1 id="response">Click Here</h1>
-        <p id="reprompt">Click to guess again</p>
-        <p id="new-game">Click to play again</p>
+<div class="container">
+    <div class="game-board">
+        <div id="guess" class="response_div">
+            <input type="text" id="guess_input" placeholder="Guess a number between 1 and 10" autofocus>
+            <h1 id="response">Click Here</h1>
+            <p id="reprompt">Click to guess again</p>
+            <p id="new-game">Click to play again</p>
+        </div>
     </div>
-
-    <!--<button type="button" id="reset">New Game</button>-->
+    <div class="score-board">
+        <h1 id="your-score"></h1>
+    </div>
 </div>
 <!-- javaScript link -->
 <script src="script.js" rel="script"></script>

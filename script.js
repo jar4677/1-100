@@ -5,6 +5,7 @@
 //Basic Guess Event
 var theNumber = null;
 var correct = false;
+var score = 110;
 
 function pickNumber() {
     return (Math.ceil(Math.random() * 10));
@@ -41,6 +42,7 @@ function makeGuess() {
             $("#reprompt").css('display', 'none');
             $("#new-game").css('display', 'block');
             $("#guess").css('background-color', 'green');
+            $("#your-score").html("Your score: " + score + "!").css('display', 'block');
             correct = true;
             break;
     }
@@ -49,18 +51,19 @@ function makeGuess() {
 function reset() {
     theNumber = pickNumber();
     $("#response").html("Click Here");
-    $("#reprompt").css('display', 'none');
-    $("#new-game").css('display', 'none');
+    $("#reprompt, #new-game, #your-score").css('display', 'none');
     $("#guess").css('background-color', 'grey');
     $("#guess_input").val('');
     $("#guess_input").focus();
     correct = false;
+    score = 110;
 }
 
 $("#guess").click(function () {
     if (correct) {
         reset();
     } else {
+        score -= 10;
         makeGuess();
     }
 });
