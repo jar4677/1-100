@@ -4,6 +4,7 @@
 
 //Basic Guess Event
 var theNumber = null;
+var correct = false;
 
 function pickNumber() {
     return (Math.ceil(Math.random() * 10));
@@ -38,29 +39,32 @@ function makeGuess() {
         default :
             $("#response").html("You guessed it!");
             $("#reprompt").css('display', 'none');
+            $("#new-game").css('display', 'block');
             $("#guess").css('background-color', 'green');
+            correct = true;
             break;
     }
 }
 
 function reset() {
     theNumber = pickNumber();
-    $("#response").html("Guess");
+    $("#response").html("Click Here");
     $("#reprompt").css('display', 'none');
+    $("#new-game").css('display', 'none');
+    $("#guess").css('background-color', 'grey');
     $("#guess_input").val('');
     $("#guess_input").focus();
+    correct = false;
 }
 
 $("#guess").click(function () {
-    var msg = $("#response").html();
-    console.log(msg);
-    if (msg = "You guessed it!"){
+    if (correct) {
         reset();
     } else {
         makeGuess();
     }
 });
 
-$("#reset").click(function () {
-    reset();
-});
+// $("#reset").click(function () {
+//     reset();
+// });
