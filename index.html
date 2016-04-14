@@ -21,13 +21,12 @@
     }
     function make_guess() {
         var the_guess = $("#guess_input").val();
-        var output = $("#response_div");
         if (the_guess > the_number){
-            output.html("Too High!");
+            $("#response_div").html("Too High!");
         } else if (the_guess < the_number){
-            output.html("Too Low!");
+            $("#response_div").html("Too Low!");
         } else {
-            output.html("You guessed it!");
+            $("#response_div").html("You guessed it!");
         }
     }
 
