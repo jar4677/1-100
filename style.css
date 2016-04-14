@@ -1,29 +1,51 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
 input{
-    width: 200px;
+    width: 400px;
+    height: 50px;
     border: none;
     text-align: center;
-    font-size: 1.5;
+    font-size: 1.5em;
 }
 
 h1{
-    color: red;
+    margin: .5em;
+}
+
+#reprompt{
+    display: none;
 }
 
 :focus{
     outline: none;
 }
 
-.response_div{
-    height: 70px;
-    /*width: 200px;*/
-    background-color: grey;
-    padding: 20px;
+.game-board{
     display: inline-block;
     position: relative;
     left: 50vw;
     top: 50vh;
     transform: translate(-50%, -50%);
+}
+
+.response_div{
+    height: 140px;
+    background-color: grey;
+    padding: 20px;
     text-align: center;
     border-radius: 15px;
     box-shadow: 2px 2px 6px black;
+}
+
+#reset{
+    float: right;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 6px black;
+    margin: 10px 0;
+    font-size: 1.5em;
+    padding: 4px 8px;
 }
