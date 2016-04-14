@@ -3,33 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Guessing Game</title>
+    <link href="style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script>
-        var the_number = null;
-
-        function pick_number() {
-            var random_number = (Math.ceil(Math.random() * 10));
-            return random_number;
-        }
-
-        function make_guess() {
-            var the_guess = document.getElementById("guess_input").value;
-            var output = document.getElementById("response_div");
-            if (the_guess > the_number){
-                output.innerHTML = "Too High!";
-            } else if (the_guess < the_number){
-                output.innerHTML = "Too Low!";
-            } else {
-                output.innerHTML = "You guessed it!";
-            }
-        }
-
-        $(document).ready(function () {
-            $("#guess").click(function () {
-                make_guess();
-            });
-        })
-    </script>
 </head>
 <body onload="the_number = pick_number()">
 <input type="number" id="guess_input" placeholder="Guess a number between 1 and 10" style="width: 200px">
@@ -37,5 +12,29 @@
 <button type="submit" id="guess">Guess</button>
 
 <div id="response_div"></div>
+
+<script>
+    var the_number = null;
+    function pick_number() {
+        var random_number = (Math.ceil(Math.random() * 10));
+        return random_number;
+    }
+    function make_guess() {
+        var the_guess = $("#guess_input").val();
+        var output = $("#response_div");
+        if (the_guess > the_number){
+            output.html("Too High!");
+        } else if (the_guess < the_number){
+            output.html("Too Low!");
+        } else {
+            output.html("You guessed it!");
+        }
+    }
+
+    $("#guess").click(function () {
+        make_guess();
+    });
+
+</script>
 </body>
 </html>
