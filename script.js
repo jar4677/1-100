@@ -5,10 +5,10 @@
 //Basic Guess Event
 var theNumber = null;
 var correct = false;
-var score = 110;
+var score = 101;
 
 function pickNumber() {
-    return (Math.ceil(Math.random() * 10));
+    return (Math.ceil(Math.random() * 100));
 }
 
 $("document").ready(function () {
@@ -16,11 +16,12 @@ $("document").ready(function () {
     console.log('load #:',theNumber);
 });
 
+//submit guess
 function makeGuess() {
     var theGuess = $("#guess_input").val();
 
     switch (true){
-        case (isNaN(theGuess) || theGuess < 1 || theGuess > 10):
+        case (isNaN(theGuess) || theGuess < 1 || theGuess > 100):
             $("#response").html("Invalid Input");
             $("#reprompt").css('display', 'block');
             $("#guess_input").focus();
@@ -56,14 +57,14 @@ function reset() {
     $("#guess_input").val('');
     $("#guess_input").focus();
     correct = false;
-    score = 110;
+    score = 101;
 }
 
 $("#guess").click(function () {
     if (correct) {
         reset();
     } else {
-        score -= 10;
+        score--;
         makeGuess();
     }
 });
