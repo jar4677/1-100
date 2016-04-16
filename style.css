@@ -24,9 +24,10 @@ body{
     padding: 20px;
     border-radius: 15px;
     box-shadow: 2px 2px 6px black;
+    transition: 1s;
 }
 
-.response_div:active{
+.response_div:active, .response_div:active #guess_input{
     box-shadow: none;
 }
 
@@ -37,6 +38,8 @@ body{
     border: none;
     text-align: center;
     font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px black inset;
 }
 
 h1{
