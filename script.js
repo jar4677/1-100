@@ -5,12 +5,13 @@
 //Basic Guess Event
 var theNumber = null;
 var correct = false;
-var score = 101;
+var score = 105;
 
 //color change variables
 var low;
 var high;
 var color;
+var indicator;
 
 
 //pick a random number
@@ -18,9 +19,7 @@ function pickNumber() {
     var randomNumber = (Math.ceil(Math.random() * 100));
     low = ((randomNumber - 1)/2);
     high = (randomNumber + ((100 - (randomNumber + 1))/2));
-    console.log('random #: ', randomNumber);
-    console.log('low : ', low);
-    console.log('high : ', high);
+    console.log(randomNumber);
     return (randomNumber);
 }
 
@@ -41,7 +40,6 @@ function makeGuess() {
         //gets the rgb value depending on whether the guess is high or low
         if (theGuess < theNumber) {
             var x = Math.round(255 * ((highLow - guessDif) / highLow));
-            console.log('rgb value: ', x);
         } else {
             var y = 100 - highLow;
             var x = Math.round(255 * ((y - guessDif) / y));
@@ -49,12 +47,12 @@ function makeGuess() {
 
         //sets the rgb value to the color variable
         if (theGuess > low && theGuess < high){
-            // color = "rgb(255," + x + ", " + x + ")";
             color = "rgb(255, 0, " + x + ")";
         } else {
-            // color = "rgb(" + x + ", " + x + ", 255)";
             color = "rgb(" + x + ", 0, 255)";
         }
+
+        indicator = 100 - ((x / 255) * 100);
     }
 
     //makes changes based on input
@@ -68,16 +66,16 @@ function makeGuess() {
             $("#response").html("Too High!");
             $("#reprompt").css('display', 'block');
             setColor(high);
-            console.log('color: ', color);
             $("#guess").css('background-color', color);
+            $("#indicator").css('left', indicator + '%');
             $("#guess_input").focus();
             break;
         case (theGuess < theNumber):
             $("#response").html("Too Low!");
             $("#reprompt").css('display', 'block');
             setColor(low);
-            console.log('color: ', color);
             $("#guess").css('background-color', color);
+            $("#indicator").css('left', indicator + '%');
             $("#guess_input").focus();
             break;
         default :
@@ -85,6 +83,7 @@ function makeGuess() {
             $("#reprompt").css('display', 'none');
             $("#new-game").css('display', 'block');
             $("#guess").css('background-color', 'green');
+            $("#indicator").css('display', 'none');
             $("#your-score").html("Your score: " + score + "!").css('display', 'block');
             correct = true;
             break;
@@ -97,6 +96,7 @@ function reset() {
     $("#response").html("Click Here");
     $("#reprompt, #new-game, #your-score").css('display', 'none');
     $("#guess").css('background-color', 'grey');
+    $("#indicator").css('left', '50%').css('display', 'block');
     $("#guess_input").val('');
     $("#guess_input").focus();
     correct = false;
@@ -108,11 +108,7 @@ $("#guess").click(function () {
     if (correct) {
         reset();
     } else {
-        score--;
+        score -= 5;
         makeGuess();
     }
 });
-
-// $("#reset").click(function () {
-//     reset();
-// });
