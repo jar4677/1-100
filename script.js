@@ -33,7 +33,6 @@ var guess = {
     setColor: function (highLow, theGuess) {
         //gets the absolute value of the difference from the median
         var guessDif = Math.abs(highLow - theGuess);
-        console.log('guessDif: ' + guessDif);
         var x;
         var y;
 
@@ -53,10 +52,6 @@ var guess = {
         } else {
             guess.color = "rgb(" + x + ", 0, 255)";
         }
-
-        // console.log("x: " + x);
-        // console.log('color: ' + guess.color);
-        // console.log("indicator: " + guess.indicatorValue);
     },
 
     /**
