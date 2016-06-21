@@ -68,12 +68,12 @@ var guess = {
         switch (true) {
             case (isNaN(theGuess) || theGuess < 1 || theGuess > 100):
                 $("#response").html("Invalid Input");
-                $("#reprompt").css('display', 'block');
+                $("#reprompt").show();
                 $("#guess-input").focus().val('');
                 break;
             case (theGuess > guess.theNumber):
                 $("#response").html("Too High!");
-                $("#reprompt").css('display', 'block');
+                $("#reprompt").show();
                 guess.setColor(guess.high, theGuess);
                 $("#guess").css('background-color', guess.color);
                 $("#indicator").css('left', guess.indicatorValue + '%');
@@ -82,7 +82,7 @@ var guess = {
                 break;
             case (theGuess < guess.theNumber):
                 $("#response").html("Too Low!");
-                $("#reprompt").css('display', 'block');
+                $("#reprompt").show();
                 guess.setColor(guess.low, theGuess);
                 $("#guess").css('background-color', guess.color);
                 $("#indicator").css('left', guess.indicatorValue + '%');
@@ -91,11 +91,10 @@ var guess = {
                 break;
             default :
                 $("#response").html("You guessed it!");
-                $("#reprompt").css('display', 'none');
-                $("#new-game").css('display', 'block');
+                $("#reprompt").hide();
+                $("#new-game, #indicator").show();
                 $("#guess").css('background-color', 'green');
-                $("#indicator").css('display', 'none');
-                $("#your-score").html("Your score: " + guess.score + "!").css('display', 'block');
+                $("#your-score").html("Your score: " + guess.score + "!").show();
                 guess.correct = true;
                 break;
         }
@@ -119,12 +118,15 @@ var guess = {
     reset: function () {
         guess.theNumber = guess.pickNumber();
         $("#response").html("Click Here");
-        $("#reprompt", "#new-game", "#your-score").css('display', 'none');
+        $("#reprompt, #new-game, #your-score").hide();
         $("#guess").css('background-color', 'grey');
-        $("#indicator").css('left', '50%').css('display', 'block');
+        $("#indicator").css('left', '50%').show();
         $("#guess-input").val('').focus();
         guess.correct = false;
         guess.score = 105;
+        $(".log-item").each(function () {
+            $(this).remove();
+        });
     },
 
     /**
