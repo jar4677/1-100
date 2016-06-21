@@ -33,29 +33,30 @@ var guess = {
     setColor: function (highLow, theGuess) {
         //gets the absolute value of the difference from the median
         var guessDif = Math.abs(highLow - theGuess);
+        console.log('guessDif: ' + guessDif);
         var x;
         var y;
 
         //gets the rgb value depending on whether the guess is high or low
         if (theGuess < guess.theNumber) {
             x = Math.round(255 * ((highLow - guessDif) / highLow));
+            guess.indicatorValue = (theGuess / guess.theNumber) * 100;
         } else {
             y = 100 - highLow;
             x = Math.round(255 * ((y - guessDif) / y));
+            guess.indicatorValue = ((100 - theGuess) / (100 - guess.theNumber)) * 100;
         }
 
         //sets the rgb value to the color variable
         if (theGuess > guess.low && theGuess < guess.high) {
             guess.color = "rgb(255, 0, " + x + ")";
-            guess.indicatorValue = 100 - ((x / 255) * 100);
         } else {
             guess.color = "rgb(" + x + ", 0, 255)";
-            guess.indicatorValue = ((x / 255) * 100);
         }
 
-        console.log("x: " + x);
-        console.log('color: ' + guess.color);
-        console.log("indicator: " + guess.indicatorValue);
+        // console.log("x: " + x);
+        // console.log('color: ' + guess.color);
+        // console.log("indicator: " + guess.indicatorValue);
     },
 
     /**
