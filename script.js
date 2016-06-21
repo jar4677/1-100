@@ -14,14 +14,15 @@ var guess = {
     indicatorValue: 0,
 
     /**
-     * guess.pickNumber - selects a randm number between 1-100
+     * guess.pickNumber - selects a random number between 1-100
      * @returns {number}
      */
     pickNumber: function () {
         var randomNumber = (Math.ceil(Math.random() * 100));
         guess.low = ((randomNumber - 1) / 2);
         guess.high = (randomNumber + ((100 - (randomNumber + 1)) / 2));
-        return (randomNumber)
+        console.log(randomNumber);
+        return randomNumber;
     },
 
     /**
@@ -46,11 +47,15 @@ var guess = {
         //sets the rgb value to the color variable
         if (theGuess > guess.low && theGuess < guess.high) {
             guess.color = "rgb(255, 0, " + x + ")";
+            guess.indicatorValue = 100 - ((x / 255) * 100);
         } else {
             guess.color = "rgb(" + x + ", 0, 255)";
+            guess.indicatorValue = ((x / 255) * 100);
         }
 
-        guess.indicatorValue = 100 - ((x / 255) * 100);
+        console.log("x: " + x);
+        console.log('color: ' + guess.color);
+        console.log("indicator: " + guess.indicatorValue);
     },
 
     /**
